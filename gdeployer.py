@@ -46,8 +46,14 @@ def update_app_yaml(dirname, appid):
 	appid -- the appid to be uploaded/updated/rolled-back
 	"""
 	assert isinstance(dirname, basestring) and isinstance(appid, basestring)
-	filename = os.path.join(dirname, 'app.yaml')
-	assert os.path.isfile(filename), u'%s not exists!' % filename
+	
+	# From goagent 3.2.2 on, file app.template.yaml replaced file app.yaml
+	src = os.path.join(dirname, "app.template.yaml") # source	
+	filename = os.path.join(dirname, "app.yaml") # destination
+	if not os.path.isfile(filename):
+		assert os.path.isfile(src), u'%s not exists!' % src
+		shutil.copy2(src, filename)
+	#assert os.path.isfile(filename), u'%s not exists!' % filename
 	
 	with open(filename, 'rb') as fp:
 		yaml = fp.read()
