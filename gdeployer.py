@@ -71,7 +71,7 @@ def run_on_Windows():
 	# Lop for the appids to do the batch action
 	for appid in gdcp.appid.split('|'):
 		update_app_yaml(gdcp.goagent_server_src, appid)
-		print("\ngdeployer: %s is to be uploaded/rolled-back from Windows ..." % appid)
+		print("\n*** gdeployer: %s is to be uploaded/rolled-back from Windows ..." % appid)
 		os.system(__TBAT__)
 
 
