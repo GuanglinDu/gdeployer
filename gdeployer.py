@@ -19,6 +19,7 @@ Howtos:
 import sys
 import os
 import re
+import shutil
 import platform
 import gdeployer_config_parser
 
